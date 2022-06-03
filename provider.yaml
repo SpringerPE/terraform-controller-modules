@@ -1,0 +1,18 @@
+apiVersion: terraform.core.oam.dev/v1beta1
+kind: Provider
+metadata:
+  namespace: katee-engineering-enablement
+  name: gcp-project-test
+  labels:
+    "config.oam.dev/catalog": "sn"
+    "config.oam.dev/type": "terraform-provider"
+    "config.oam.dev/provider": "terraform-gcp"
+spec:
+  provider: gcp
+  region: europe-west4
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: katee-engineering-enablement
+      name: gcp-account-creds-project-test
+      key: credentials

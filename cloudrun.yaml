@@ -1,0 +1,24 @@
+apiVersion: core.oam.dev/v1beta1
+kind: ComponentDefinition
+metadata:
+  annotations:
+    definition.oam.dev/description: Terraform module to run a cloudrun image
+  creationTimestamp: null
+  labels:
+    type: terraform
+    vendor: sn
+  name: test-cloudrun-ee
+  namespace: katee-engineering-enablement
+spec:
+  schematic:
+    terraform:
+      configuration: https://github.com/jriguera/terraform-controller-modules.git
+      path: cloudrun
+      providerRef:
+        name: gcp-project-test
+        namespace: katee-engineering-enablement
+      type: remote
+  workload:
+    definition:
+      apiVersion: terraform.core.oam.dev/v1beta1
+      kind: Configuration
