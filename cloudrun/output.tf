@@ -10,9 +10,8 @@ output "sa_name" {
   value = google_service_account.sa.email
 }
 
-# to base64 encode, set true
 output "sa_private_key" {
   value = google_service_account_key.sa_key.private_key
   description = "The private key in JSON format"
-  sensitive = false
+  sensitive = true
 }
